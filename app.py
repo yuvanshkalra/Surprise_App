@@ -149,7 +149,7 @@ if not st.session_state.unlocked:
         color: white !important;
     }
 
-    /* Center the unlock button inside the card */
+    /* Perfectly center the unlock button container and the button itself */
     div[data-testid="stColumn"]:nth-of-type(2) div.stButton {
         display: flex !important;
         justify-content: center !important;
@@ -167,8 +167,9 @@ if not st.session_state.unlocked:
         font-size: 1rem;
         box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         transition: all 0.3s ease;
-        display: block;
-        margin: 0 auto !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: block !important;
     }
 
     div[data-testid="stColumn"]:nth-of-type(2) div.stButton > button:hover {

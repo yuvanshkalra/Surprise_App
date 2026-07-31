@@ -121,16 +121,17 @@ if not st.session_state.unlocked:
     # --- LOCK SCREEN CSS (Only active when locked) ---
     lock_screen_css = """
     <style>
-    /* Force the main container to center vertically */
+    /* Force the main container to center perfectly on the screen */
     .block-container {
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
-        min-height: 85vh !important;
+        align-items: center !important;
+        min-height: 90vh !important;
         padding-top: 0rem !important; 
     }
 
-    /* Turn the center column into a beautiful invitation card for newer Streamlit versions */
+    /* Target the center column and set a clean width */
     div[data-testid="stColumn"]:nth-of-type(2) {
         background-image: url("https://images.unsplash.com/photo-1518381533037-12fb189670f3?q=80&w=800&auto=format&fit=crop"); 
         background-size: cover;
@@ -141,6 +142,7 @@ if not st.session_state.unlocked:
         border: 4px double #FF69B4; 
         position: relative;
         overflow: hidden;
+        min-width: 50%; /* Keeps the card perfectly sized */
     }
 
     /* Add a dark tint inside the card */
@@ -172,7 +174,7 @@ if not st.session_state.unlocked:
     st.markdown(lock_screen_css, unsafe_allow_html=True)
     
     # --- LOCK SCREEN LAYOUT ---
-    col1, col2, col3 = st.columns([1, 2, 1])
+    col1, col2, col3 = st.columns([1, 1.5, 1])
     with col2:
         st.markdown("<h1>A Secret Gateway</h1>", unsafe_allow_html=True)
         st.write("<p class='center-text'>Enter the password to unlock the Girlfriend's Day Surprise.</p>", unsafe_allow_html=True)
@@ -274,10 +276,9 @@ else:
         
         # --- AUTO-SCROLLING MEMORY GALLERY ---
         image_list = []
-        # Uses relative path so it works locally and on Streamlit Cloud
         folder_path = "Images" 
         
-        # Check if the folder exists and grab all the images
+        # Check if the folder exists and grab all the images dynamically
         if os.path.exists(folder_path):
             valid_extensions = ('.png', '.jpg', '.jpeg', '.gif', '.webp')
             for filename in os.listdir(folder_path):

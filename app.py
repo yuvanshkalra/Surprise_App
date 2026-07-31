@@ -215,7 +215,7 @@ else:
     st.balloons()
     
     # Background Music Player (Hidden and Autoplaying from local file)
-    audio_path =r"C:\Users\yuvan\OneDrive\Desktop\Cigarettes_After_Sex_-_Sweet_(mp3.pm).mp3"
+    audio_path = "audio.mp3"
     audio_src = get_audio_base64(audio_path)
     
     if audio_src:

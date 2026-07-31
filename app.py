@@ -64,9 +64,10 @@ h1, h2, label, .center-text {{
     text-align: center !important;
 }}
 .stButton {{
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin-top: 15px !important;
 }}
 .stButton > button {{
     background-color: #FF69B4 !important; 
@@ -78,6 +79,8 @@ h1, h2, label, .center-text {{
     font-size: 1rem;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     transition: all 0.3s ease;
+    display: block;
+    margin: 0 auto;
 }}
 .stButton > button:hover {{
     background-color: #ff4d94 !important;

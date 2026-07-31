@@ -63,6 +63,26 @@ h1, h2, h3, p, .stMarkdown, label {{
 h1, h2, label, .center-text {{
     text-align: center !important;
 }}
+.stButton {{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}}
+.stButton > button {{
+    background-color: #FF69B4 !important; 
+    color: white !important;
+    border-radius: 20px;
+    border: none;
+    padding: 10px 24px;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}}
+.stButton > button:hover {{
+    background-color: #ff4d94 !important;
+    transform: translateY(-2px);
+}}
 .floating-sticker {{
     position: fixed;
     font-size: 4rem; 
@@ -147,34 +167,6 @@ if not st.session_state.unlocked:
     }
     input {
         color: white !important;
-    }
-
-    /* Perfectly center the unlock button container and the button itself */
-    div[data-testid="stColumn"]:nth-of-type(2) div.stButton {
-        display: flex !important;
-        justify-content: center !important;
-        width: 100% !important;
-        margin-top: 20px !important;
-    }
-
-    div[data-testid="stColumn"]:nth-of-type(2) div.stButton > button {
-        background-color: #FF69B4 !important; 
-        color: white !important;
-        border-radius: 20px;
-        border: none;
-        padding: 10px 32px;
-        font-weight: bold;
-        font-size: 1rem;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-        transition: all 0.3s ease;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        display: block !important;
-    }
-
-    div[data-testid="stColumn"]:nth-of-type(2) div.stButton > button:hover {
-        background-color: #ff4d94 !important;
-        transform: translateY(-2px);
     }
     </style>
     """

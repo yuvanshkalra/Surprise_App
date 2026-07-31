@@ -121,16 +121,17 @@ if not st.session_state.unlocked:
     # --- LOCK SCREEN CSS (Only active when locked) ---
     lock_screen_css = """
     <style>
-    /* Force the main container to center perfectly on the screen */
+    /* Force the main container to push down and center vertically & horizontally */
     .block-container {
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
-        min-height: 85vh !important;
-        padding-top: 0rem !important; 
+        align-items: center !important;
+        min-height: 95vh !important;
+        padding-top: 4rem !important; 
     }
 
-    /* Target the center column */
+    /* Target the center column card */
     div[data-testid="stColumn"]:nth-of-type(2) {
         background-image: url("https://images.unsplash.com/photo-1518381533037-12fb189670f3?q=80&w=800&auto=format&fit=crop"); 
         background-size: cover;

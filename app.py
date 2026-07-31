@@ -66,6 +66,7 @@ h1, h2, label, .center-text {{
 .stButton {{
     display: flex;
     justify-content: center;
+    margin-top: 15px;
 }}
 .stButton > button {{
     background-color: #FF69B4 !important; 
@@ -75,6 +76,12 @@ h1, h2, label, .center-text {{
     padding: 10px 24px;
     font-weight: bold;
     font-size: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}}
+.stButton > button:hover {{
+    background-color: #ff4d94 !important;
+    transform: translateY(-2px);
 }}
 .floating-sticker {{
     position: fixed;
@@ -114,7 +121,7 @@ if not st.session_state.unlocked:
     # --- LOCK SCREEN CSS (Only active when locked) ---
     lock_screen_css = """
     <style>
-    /* 1. Force the main container to center vertically */
+    /* Force the main container to center vertically */
     .block-container {
         display: flex !important;
         flex-direction: column !important;
@@ -123,8 +130,8 @@ if not st.session_state.unlocked:
         padding-top: 0rem !important; 
     }
 
-    /* 2. Turn the center column into a beautiful invitation card */
-    [data-testid="column"]:nth-child(2) {
+    /* Turn the center column into a beautiful invitation card for newer Streamlit versions */
+    div[data-testid="stColumn"]:nth-of-type(2) {
         background-image: url("https://images.unsplash.com/photo-1518381533037-12fb189670f3?q=80&w=800&auto=format&fit=crop"); 
         background-size: cover;
         background-position: center;
@@ -133,10 +140,11 @@ if not st.session_state.unlocked:
         box-shadow: 0 15px 35px rgba(0,0,0,0.6);
         border: 4px double #FF69B4; 
         position: relative;
+        overflow: hidden;
     }
 
-    /* 3. Add a dark tint inside the card */
-    [data-testid="column"]:nth-child(2)::before {
+    /* Add a dark tint inside the card */
+    div[data-testid="stColumn"]:nth-of-type(2)::before {
         content: "";
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
@@ -145,10 +153,19 @@ if not st.session_state.unlocked:
         z-index: 0;
     }
 
-    /* 4. Ensure the text and inputs float above the dark tint */
-    [data-testid="column"]:nth-child(2) > * {
+    /* Ensure the text and inputs float above the dark tint */
+    div[data-testid="stColumn"]:nth-of-type(2) > div {
         position: relative;
         z-index: 1;
+    }
+    
+    /* Input field styling */
+    div[data-baseweb="input"] {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        border-radius: 10px;
+    }
+    input {
+        color: white !important;
     }
     </style>
     """
@@ -168,7 +185,7 @@ else:
     landing_page_css = """
     <style>
     /* Turn both columns into beautifully framed cards */
-    [data-testid="column"] {
+    div[data-testid="stColumn"] {
         background-image: url("https://images.unsplash.com/photo-1518381533037-12fb189670f3?q=80&w=800&auto=format&fit=crop"); 
         background-size: cover;
         background-position: center;
@@ -177,10 +194,11 @@ else:
         box-shadow: 0 15px 35px rgba(0,0,0,0.6);
         border: 4px double #FF69B4; 
         position: relative;
+        overflow: hidden;
     }
 
     /* Add the dark tint inside the columns */
-    [data-testid="column"]::before {
+    div[data-testid="stColumn"]::before {
         content: "";
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
@@ -190,7 +208,7 @@ else:
     }
 
     /* Ensure the text and content float above the dark tint */
-    [data-testid="column"] > * {
+    div[data-testid="stColumn"] > div {
         position: relative;
         z-index: 1;
     }
